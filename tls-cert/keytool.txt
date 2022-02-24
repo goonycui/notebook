@@ -1,0 +1,44 @@
+
+
+# list details
+keytool -list -v -keystore <path to keystore.pfx>
+
+
+# directly generate self-signed keystore
+keytool -genkey -keyalg RSA -alias tomcat -keystore selfsigned.jks -validity <days> -keysize 2048
+
+# export certificate from keystore
+keytool -exportcert \
+ -rfc \
+ -alias example \
+ -file cert.pem \
+ -keystore example.p12 \
+ -storepass changeit \
+ -storetype PKCS12 \
+ -v
+
+# explain for above
+-rfc – Will output in PEM format as defined by RFC 1421.
+-alias – The alias of the entry encapsulated in the keystore. The chosen value should enhance the readability of the keystore entries, especially when the keystore contains multiple entries.
+-file – The file to contain the exported X.509 certificate, exported filename
+-keystore – The filename of the keystore.
+-storepass – The current keystore password. We recommend leaving this option off and letting keytool prompt you instead of writing your password in plain text here.
+-storetype – Recommended keystore types include PKCS12 and JKS. In this case, the keystore was of type PKCS12.
+-v – Verbose output.
+
+
+# Convert from JKS to P12
+keytool -importkeystore \
+    -srckeystore keystore.jks \
+    -destkeystore keystore.p12 \
+    -deststoretype PKCS12 \
+    -srcalias <jkskeyalias> \
+    -deststorepass <password> \
+    -destkeypass <password>
+
+# Export certificate using openssl
+openssl pkcs12 -in keystore.p12  -nokeys -out cert.pem
+
+# Export unencrypted private key
+openssl pkcs12 -in keystore.p12  -nodes -nocerts -out key.pem
+

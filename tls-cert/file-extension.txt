@@ -1,5 +1,5 @@
 
-# p12 and pfx:
+# p12 and pfx (keystore):
 p12 is an alternate extension for what is generally referred to as a “PFX file”, it’s the combined format that holds the private key and certificate and is the format most modern signing utilities use. Same with alternate extensions are .PFX, .PKCS12
 
 The PKCS#12 or PFX format is a binary format for storing the server certificate, any intermediate certificates, and the private key in one encryptable file. PFX files usually have extensions such as .pfx and .p12.

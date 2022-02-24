@@ -1,0 +1,7 @@
+https://www.thesslstore.com/blog/root-certificates-intermediate/
+
+https://www.sslshopper.com/article-most-common-openssl-commands.html
+
+https://www.sslshopper.com/ssl-converter.html
+
+https://geekflare.com/openssl-commands-certificates/
