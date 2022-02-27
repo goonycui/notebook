@@ -42,3 +42,6 @@ openssl pkcs12 -in keystore.p12  -nokeys -out cert.pem
 # Export unencrypted private key
 openssl pkcs12 -in keystore.p12  -nodes -nocerts -out key.pem
 
+# Generate trust store chain
+# Run it multiple times to include all certs in the chain in order(put into same p12 file), but with different alias for each
+keytool -import -file ca-cert.pem -alias <CAaliasName> -keystore ca-truststore.p12

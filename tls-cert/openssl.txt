@@ -22,6 +22,10 @@ openssl pkcs12 -export -out ca-cert-p.p12 -inkey ca-private.pem -in ca-cert.pem
 # or add CA additionally
 openssl pkcs12 -export -in cert.pem -inkey private.pem -certfile <Cert Authority cert file> -out bundle.pfx
 
+# Generate trust store chain
+# Run it multiple times to include all certs in the chain in order(put into same p12 file)
+openssl pkcs12 -export -nokeys -in <cert file> -out ca-truststore.p12
+
 
 # Export certificate from p12
 openssl pkcs12 -in keystore.p12  -nokeys -out cert.pem
